@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RestoSmart</string>
+    <string name="textForEmpty">\t\t\t\t\t\tOrder Bag is Empty.\n No items have been ordered.</string>
+    <string name="checkout">Generate Bill</string>
+    <string name="options">Additional Options</string>
+    <string name="qty">Quantity</string>
+    <string name="extra">Extra Note</string>
+    <string name="spclInstructions">Any extra note about the dish? \nExtra dressing , extra spicy?</string>
+    <string name="adtoCheck">Add to Bag</string>
+</resources>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.giridhar.restosmart.ManageOrderActivity">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:lines="10"
+        android:gravity="top"
+        android:background="@android:color/transparent"
+        android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="71dp"
+        android:text="@string/options"
+        android:fontFamily="monospace"
+        android:textSize="20sp"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="#D3D3D3"
+        android:layout_below="@+id/textView2"
+        android:id="@+id/view2" />
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/qty"
+        android:fontFamily="monospace"
+        android:textSize="20sp"
+        android:layout_below="@+id/view2"
+        android:layout_alignStart="@+id/editText" />
+
+
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:padding="8dp"
+        android:inputType="number"
+        android:background="@drawable/solid_editext"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_marginStart="13dp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="#D3D3D3"
+        android:layout_below="@+id/editText3"
+        android:id="@+id/view4"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/extra"
+        android:fontFamily="monospace"
+        android:textSize="20sp"
+        android:layout_below="@+id/view4"
+        android:layout_alignStart="@+id/textView3" />
+
+
+    <ImageButton
+        android:id="@+id/reduceQty"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_toEndOf="@+id/editText"
+        app:srcCompat="@drawable/minus"
+        android:scaleType="centerCrop"
+        android:padding="10dp"
+        android:background="@drawable/solid_editext"
+        android:layout_alignTop="@+id/editText3" />
+
+    <ImageButton
+        android:id="@+id/increaseQty"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/reduceQty"
+        android:layout_toEndOf="@+id/reduceQty"
+        app:srcCompat="@drawable/plus"
+        android:scaleType="centerCrop"
+        android:padding="10dp"
+        android:background="@drawable/solid_editext"/>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView4"
+        android:gravity="top"
+        android:minLines="5"
+        android:lines="7"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="35dp"
+        android:inputType="textPersonName"
+        android:hint="@string/spclInstructions" />
+
+    <Button
+        android:id="@+id/addToCartManageOrder"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:text="@string/adtoCheck"
+        android:fontFamily="monospace"
+        android:background="#2962FF"
+        android:textColor="#FFFFFF"/>
+
+
+</RelativeLayout>

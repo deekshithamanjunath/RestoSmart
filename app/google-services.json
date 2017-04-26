@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1042494483527",
+    "firebase_url": "https://restosmart-fc7ed.firebaseio.com",
+    "project_id": "restosmart-fc7ed",
+    "storage_bucket": "restosmart-fc7ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042494483527:android:f62bb6ba12fbc3d4",
+        "android_client_info": {
+          "package_name": "com.example.giridhar.restosmart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042494483527-rsat919675erfqsol52t08dh5586kg6e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.giridhar.restosmart",
+            "certificate_hash": "ead666f10f0ee6cd2ba0e5984a2a26802c466be1"
+          }
+        },
+        {
+          "client_id": "1042494483527-rirn2onuvoiqb5cm01pjpd23k64bs496.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHDWg4QLGzWvDI98GEu9-OSQn-fR7_FHc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042494483527-rirn2onuvoiqb5cm01pjpd23k64bs496.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
