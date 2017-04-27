@@ -6,18 +6,50 @@
     android:layout_height="match_parent"
     tools:context="com.example.giridhar.restosmart.CheckoutWithOrder">
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/placedOrder"
+        android:fontFamily="monospace"
+        android:textSize="20dp"
+        android:backgroundTint="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/addMoreItems"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/plus"
+        android:fontFamily="monospace"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#2962FF"
+        android:text="@string/addmore"
+        android:drawablePadding="20dp"
+        android:drawableEnd=""
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignEnd="@+id/textView5" />
+
+    <Button
+        android:id="@+id/checkout"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp"
+        android:text="@string/checkout"
+        android:background="#2962FF"
+        android:textColor="#FFFFFF"/>
+
     <ListView
-        android:id="@+id/orderList"
+        android:id="@+id/orderedMenuList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/generateBill" />
-
-    <Button
-        android:id="@+id/generateBill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/checkout"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/checkout"
+        android:layout_below="@+id/addMoreItems"
+        />
 </RelativeLayout>

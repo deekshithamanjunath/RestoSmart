@@ -128,8 +128,8 @@
         android:layout_marginBottom="35dp"
         android:text="@string/adtoCheck"
         android:fontFamily="monospace"
-        android:background="#2962FF"
-        android:textColor="#FFFFFF"/>
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#2962FF"/>
 
 
 </RelativeLayout>

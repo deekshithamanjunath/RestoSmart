@@ -7,4 +7,6 @@
     <string name="extra">Extra Note</string>
     <string name="spclInstructions">Any extra note about the dish? \nExtra dressing , extra spicy?</string>
     <string name="adtoCheck">Add to Bag</string>
+    <string name="addmore">Add more items</string>
+    <string name="placedOrder">Your Order</string>
 </resources>
