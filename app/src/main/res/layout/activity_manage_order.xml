@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.giridhar.restosmart.ManageOrderActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,10 +15,10 @@
         android:layout_marginStart="14dp"
         android:layout_marginTop="18dp"
         android:ems="10"
-        android:lines="10"
+
         android:gravity="top"
         android:background="@android:color/transparent"
-        android:inputType="textPersonName" />
+         />
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
@@ -130,6 +130,22 @@
         android:fontFamily="monospace"
         android:backgroundTint="#FFFFFF"
         android:textColor="#2962FF"/>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_toEndOf="@+id/addToCartManageOrder" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editText"
+        android:layout_below="@+id/editText"
+        android:layout_marginTop="13dp"
+        />
 
 
 </RelativeLayout>
