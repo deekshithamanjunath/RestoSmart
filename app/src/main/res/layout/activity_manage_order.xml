@@ -50,13 +50,13 @@
 
 
 
-    <EditText
+    <TextView
         android:id="@+id/editText3"
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:ems="10"
         android:padding="8dp"
-        android:inputType="number"
+        android:textAlignment="center"
         android:background="@drawable/solid_editext"
         android:layout_marginTop="17dp"
         android:layout_below="@+id/textView3"

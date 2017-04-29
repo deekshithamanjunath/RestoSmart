@@ -12,10 +12,9 @@ import android.widget.Toast;
 
 public class ManageOrderActivity extends AppCompatActivity implements View.OnClickListener {
 String dishname,dishdescription, dishprice;
-    TextView tvdishname,tvdishdescription,tvprice;
+    TextView tvdishname,tvdishdescription,tvprice,etQty;
     ImageButton ibreduceQty,ibincreaseQty;
     Button btaddToCart;
-    EditText etQty;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,16 +22,17 @@ String dishname,dishdescription, dishprice;
         tvdishname = (TextView) findViewById(R.id.editText);
         tvdishdescription = (TextView) findViewById(R.id.textView11);
         tvprice = (TextView) findViewById(R.id.textView10);
-        etQty = (EditText) findViewById(R.id.editText3);
+        etQty = (TextView) findViewById(R.id.editText3);
         ibincreaseQty = (ImageButton) findViewById(R.id.increaseQty);
         ibreduceQty = (ImageButton) findViewById(R.id.reduceQty);
         btaddToCart =(Button)findViewById(R.id.addToCartManageOrder);
-        Intent getData = getIntent();
-        dishname = getData.getStringExtra("dishname");
-        dishdescription = getData.getStringExtra("dishdescription");
-        dishprice = getData.getStringExtra("dishprice");
-        tvdishname.setText(dishname);
-        tvdishdescription.setText(dishdescription);
+      //  Intent getData = getIntent();
+       // dishname = getData.getStringExtra("dishname");
+       // dishdescription = getData.getStringExtra("dishdescription");
+        //dishprice = getData.getStringExtra("dishprice");
+          dishprice ="3";
+       // tvdishname.setText(dishname);
+       // tvdishdescription.setText(dishdescription);
         tvprice.setText(dishprice);
         etQty.setText(String.valueOf(1));
 
@@ -72,8 +72,13 @@ String dishname,dishdescription, dishprice;
     {
         String qty = etQty.getText().toString();
         int quantity = Integer.parseInt(qty);
-        quantity =quantity+1;
+        quantity = quantity+1;
         etQty.setText(String.valueOf(quantity));
+        int originaldishprice= Integer.parseInt(dishprice);
+        int price = quantity * originaldishprice;
+        String newprice = "$"+price;
+        tvprice.setText(newprice);
+
     }
 
     private void removeItem()
@@ -86,7 +91,12 @@ String dishname,dishdescription, dishprice;
         }
         else
         {
-            quantity =quantity-1;
+            quantity = quantity-1;
+            int originaldishprice= Integer.parseInt(dishprice);
+            //int price = Integer.parseInt(tvprice.getText().toString());
+            int price = quantity *originaldishprice;
+            String newprice = "$"+price;
+            tvprice.setText(newprice);
             etQty.setText(String.valueOf(quantity));
         }
 
