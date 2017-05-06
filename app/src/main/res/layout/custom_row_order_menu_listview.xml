@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/editdishname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:lines="2"
+        android:ems="10"
+        android:textStyle="bold"
+        android:background="@android:color/transparent"
+        android:fontFamily="monospace"
+        android:layout_marginStart="14dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <TextView
+        android:id="@+id/edititemcost"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:background="@android:color/transparent"
+        android:layout_alignBaseline="@+id/editdishname"
+        android:layout_alignBottom="@+id/editdishname"
+        android:layout_alignEnd="@+id/editdishdescription" />
+
+    <TextView
+        android:id="@+id/editdishdescription"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:lines="4"
+        android:paddingTop="0.5dp"
+        android:layout_marginTop="0.5dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="monospace"
+        android:layout_below="@+id/editdishname"
+        android:layout_alignStart="@+id/editdishname"
+        />
+</RelativeLayout>
