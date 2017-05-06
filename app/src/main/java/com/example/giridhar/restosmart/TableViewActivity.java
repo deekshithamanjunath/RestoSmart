@@ -31,6 +31,7 @@ FirebaseDatabase firebaseDataBase;
     ArrayList<Boolean>tables = new ArrayList<>();
     ArrayList<Integer>imageIds=new ArrayList<>();
     String customerName;
+    public static String idOfOrder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +108,7 @@ FirebaseDatabase firebaseDataBase;
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
       final int tablenumber = position +1;
-      String tableName = "table"+tablenumber;
+      final String tableName = "table"+tablenumber;
       boolean flagSet = tables.get(position);
         if(flagSet==true)
         {
@@ -125,7 +126,8 @@ FirebaseDatabase firebaseDataBase;
                 public void onClick(DialogInterface dialog, int whichButton)
                 {
                     customerName=input.getText().toString();
-                    Intent i = new Intent(TableViewActivity.this,ManageOrderActivity.class);
+                    idOfOrder =customerName+tablenumber;
+                    Intent i = new Intent(TableViewActivity.this,RestaurantMenuActivity.class);
                     startActivity(i);
                 }
             });

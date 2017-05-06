@@ -1,6 +1,7 @@
 package com.example.giridhar.restosmart;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +13,12 @@ import android.widget.Toast;
 
 public class ManageOrderActivity extends AppCompatActivity implements View.OnClickListener {
 String dishname,dishdescription, dishprice;
+    int dishqty;
     TextView tvdishname,tvdishdescription,tvprice,etQty;
     ImageButton ibreduceQty,ibincreaseQty;
     Button btaddToCart;
+    int tagname;
+   // RestaurantMenuActivity res;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,15 +30,19 @@ String dishname,dishdescription, dishprice;
         ibincreaseQty = (ImageButton) findViewById(R.id.increaseQty);
         ibreduceQty = (ImageButton) findViewById(R.id.reduceQty);
         btaddToCart =(Button)findViewById(R.id.addToCartManageOrder);
-      //  Intent getData = getIntent();
-       // dishname = getData.getStringExtra("dishname");
-       // dishdescription = getData.getStringExtra("dishdescription");
-        //dishprice = getData.getStringExtra("dishprice");
-          dishprice ="3";
-       // tvdishname.setText(dishname);
-       // tvdishdescription.setText(dishdescription);
+        Intent getData = getIntent();
+        dishname = getData.getStringExtra("dishname");
+        dishdescription = getData.getStringExtra("dishdescription");
+        dishprice = getData.getStringExtra("dishprice");
+        dishqty =   getData.getIntExtra("dishquantity",0);
+        //  dishprice ="3";
+        tagname = getData.getIntExtra("fragname",0);
+        System.out.println("In manager order" + tagname);
+        tvdishname.setText(dishname);
+        tvdishdescription.setText(dishdescription);
         tvprice.setText(dishprice);
-        etQty.setText(String.valueOf(1));
+        etQty.setText(String.valueOf(dishqty));
+        //res = new RestaurantMenuActivity();
 
     }
 
@@ -74,8 +82,9 @@ String dishname,dishdescription, dishprice;
         int quantity = Integer.parseInt(qty);
         quantity = quantity+1;
         etQty.setText(String.valueOf(quantity));
-        int originaldishprice= Integer.parseInt(dishprice);
-        int price = quantity * originaldishprice;
+        String tempprice =dishprice.substring(1);
+        float originaldishprice= Float.parseFloat(tempprice);
+        float price = Math.round(quantity * originaldishprice);
         String newprice = "$"+price;
         tvprice.setText(newprice);
 
@@ -92,23 +101,38 @@ String dishname,dishdescription, dishprice;
         else
         {
             quantity = quantity-1;
-            int originaldishprice= Integer.parseInt(dishprice);
-            //int price = Integer.parseInt(tvprice.getText().toString());
-            int price = quantity *originaldishprice;
-            String newprice = "$"+price;
-            tvprice.setText(newprice);
-            etQty.setText(String.valueOf(quantity));
+            String tempprice =dishprice.substring(1);
+
+            tempprice = tempprice.trim();
+            if(tempprice.equals(""))
+            {
+                 //
+            }
+            else
+            {
+                float originalprice = Float.parseFloat(tempprice);
+                System.out.println(originalprice);
+                float price = quantity * originalprice;
+                String newprice = "$"+price;
+                tvprice.setText(newprice);
+                etQty.setText(String.valueOf(quantity));
+            }
         }
 
     }
 
     private void pushToCart()
     {
-//        Intent navigateToCheckout= new Intent(ManageOrderActivity.this,CheckoutWithOrder.class);
-//        navigateToCheckout.putExtra("dishname", dishname);
-//        navigateToCheckout.putExtra("dishdesc", dishdescription);
-//        navigateToCheckout.putExtra("dishprice",dishprice);
-//        startActivity(n);
+        DatabaseHelper db = new DatabaseHelper(this);
+        Order order =  new Order();
+        order.setOrderId(TableViewActivity.idOfOrder);
+        order.setQuantity(Integer.parseInt(etQty.getText().toString()));
+        order.setDishPrice(tvprice.getText().toString());
+        order.setDishName(tvdishname.getText().toString());
+        order.setDishDescription(tvdishdescription.getText().toString());
+        db.addItemToOrderList(order);
+        Intent navigateToCheckout= new Intent(ManageOrderActivity.this,RestaurantMenuActivity.class);
+        startActivity(navigateToCheckout);
 
     }
 }

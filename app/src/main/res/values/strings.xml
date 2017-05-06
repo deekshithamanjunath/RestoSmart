@@ -6,11 +6,31 @@
     <string name="qty">Quantity</string>
     <string name="extra">Extra Note</string>
     <string name="spclInstructions">Any extra note about the dish? \nExtra dressing , extra spicy?</string>
-    <string name="adtoCheck">Add to Bag</string>
+    <string name="adtoCheck">Add to Cart</string>
     <string name="addmore">Add more items</string>
     <string name="placedOrder">Your Order</string>
     <string name="title_activity_restaurant_menu">RestaurantMenuActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="cart">shopcart</string>
+    <string name="tax">Tax:</string>
+    <string name="total">Total:</string>
+    <string name="clickForAdd">  <u>Click here to add some items to cart!</u> </string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="mailid">Email</string>
+    <string name="pwd">Password</string>
+    <string name="login">Login</string>
+    <string name="noaccount"><u>No Account Yet? Click here</u></string>
+    <string name="register">Register</string>
+    <string name="appetizers">Appetizers</string>
+    <string name="beverages">Beverages</string>
+    <string name="SandS"><![CDATA[Soups&Salads]]></string>
+    <string name="entree">Entree</string>
+    <string name="dessert">Desserts</string>
+    <string name="choosecategory">Choose Category:</string>
+    <string name="subcategory">Sub Category</string>
+    <string name="item">Food Item</string>
+    <string name="fetch">Fetch Details</string>
 </resources>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.giridhar.restosmart.ManageOrderActivity">
+    tools:context="com.example.giridhar.restosmart.ManageOrderActivity"
+    android:focusableInTouchMode="true">
 
     <TextView
         android:id="@+id/editText"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="71dp"
         android:text="@string/options"
+        android:layout_marginStart="10dp"
         android:fontFamily="monospace"
         android:textSize="20sp"
         android:layout_below="@+id/editText"
@@ -110,6 +112,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView4"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:gravity="top"
         android:minLines="5"
         android:lines="7"
@@ -117,6 +121,7 @@
         android:layout_below="@+id/textView4"
         android:layout_marginTop="35dp"
         android:inputType="textPersonName"
+        android:fontFamily="monospace"
         android:hint="@string/spclInstructions" />
 
     <Button
@@ -128,7 +133,7 @@
         android:layout_marginBottom="35dp"
         android:text="@string/adtoCheck"
         android:fontFamily="monospace"
-        android:backgroundTint="#FFFFFF"
+        android:background="@drawable/custom_edittext_manageorder"
         android:textColor="#2962FF"/>
 
     <TextView

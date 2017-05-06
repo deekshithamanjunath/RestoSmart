@@ -17,7 +17,7 @@ public class StartupActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent navigateTo = new Intent(StartupActivity.this,TableViewActivity.class);
+                Intent navigateTo = new Intent(StartupActivity.this,LoginActivity.class);
                 startActivity(navigateTo);
                 finish();
             }

@@ -14,4 +14,16 @@
         android:fontFamily="monospace"
         android:textSize="20sp"
         android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:text="@string/clickForAdd"
+        android:fontFamily="monospace"
+        android:textColor="#2962FF"
+        android:background="#FFFFFF"
+        android:clickable="true" />
 </RelativeLayout>
