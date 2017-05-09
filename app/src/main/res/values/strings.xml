@@ -29,8 +29,22 @@
     <string name="SandS"><![CDATA[Soups&Salads]]></string>
     <string name="entree">Entree</string>
     <string name="dessert">Desserts</string>
-    <string name="choosecategory">Choose Category:</string>
+    <string name="choosecategory">Choose Category for modifying:</string>
     <string name="subcategory">Sub Category</string>
     <string name="item">Food Item</string>
-    <string name="fetch">Fetch Details</string>
+    <string name="fetch">Proceed</string>
+    <string name="restaurantName">The Underwood Inn</string>
+    <string name="restaurantAddress">7007 Friars Road, San Diego CA- 92108</string>
+    <string name="restaurantNumber">Telephone Number (619-402-9876)</string>
+    <string name="servedBy">Served By:</string>
+    <string name="tablename">Table No:</string>
+    <string name="itemselected">Item</string>
+    <string name="price">Price</string>
+    <string name="addmoreitems">Add New Dish</string>
+    <string name="editDish">Modify Dish Price</string>
+    <string name="removedish">Remove Dish</string>
+    <string name="dishName">Dish Name</string>
+    <string name="dishDesc">About the Dish</string>
+    <string name="newprice">Enter the new price</string>
+    <string name="updatePrice">Update Price</string>
 </resources>

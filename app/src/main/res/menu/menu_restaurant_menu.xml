@@ -6,5 +6,11 @@
         android:id="@+id/cart"
         android:icon="@drawable/cart5"
         android:title="Cart"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/signout"
+            android:title="Logout"
+            app:showAsAction="always"/>
+
 </menu>

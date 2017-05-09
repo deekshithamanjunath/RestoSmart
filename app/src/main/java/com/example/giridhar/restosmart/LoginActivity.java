@@ -78,8 +78,8 @@ FirebaseAuth firebaseauth;
                             Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
                             etMailId.setText("");
                             etPassword.setText("");
-//                            Intent i = new Intent(LoginActivity.this, TableViewActivity.class);
-//                            startActivity(i);
+                            Intent i = new Intent(LoginActivity.this, ManagerStartupScreen.class);
+                            startActivity(i);
                         } else {
                             Toast.makeText(getApplicationContext(), "Unsuccessful", Toast.LENGTH_LONG).show();
 

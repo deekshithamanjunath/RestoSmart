@@ -1,5 +1,6 @@
 package com.example.giridhar.restosmart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,7 +27,7 @@ public class EntreeFragment extends Fragment implements AdapterView.OnItemClickL
 {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    ArrayList<EntreeInterface> dataList = new ArrayList<>();
+    ArrayList<Order> dataList = new ArrayList<>();
     ListView entreeList;
     View v;
     @Nullable
@@ -62,64 +63,44 @@ public class EntreeFragment extends Fragment implements AdapterView.OnItemClickL
     {
         dataList.clear();
         ArrayList<String>keyList = new ArrayList<>();
-        ArrayList<EntreeCategory>categorylist= new ArrayList<>();
-        ArrayList<EntreeDish> dishList = new ArrayList<>();
-
+        ArrayList<String>childrenKeyList= new ArrayList<>();
         for(DataSnapshot data: children)
         {
 
-            //String s = data.getKey();
-            String name = data.getKey();
-           // System.out.println("The entree is "+name);
-            //dataList.add(new EntreeCategory(name));
-            categorylist.clear();
-            categorylist.add(new EntreeCategory(name));
-
-            dataList.add(new EntreeCategory(name));
-
-            for(EntreeCategory entreeCategory :categorylist)
-            {
-                System.out.println("Inside category " + entreeCategory.getHeading());
-            }
             Iterable<DataSnapshot> innerChild = data.getChildren();
             for(DataSnapshot test : innerChild)
             {
                 keyList.add(test.getKey());
-               // System.out.println(test.getKey());
             }
-
             for(String s :keyList)
             {
                 if(data.child(s).hasChildren())
                 {
-                    dishList.clear();
                     Order resObj = new Order();
                     resObj.setDishName(data.child(s).getKey());
                     resObj.setDishDescription(data.child(s).child("description").getValue().toString());
                     resObj.setDishPrice(data.child(s).child("price").getValue().toString());
                     resObj.setItemCategory(data.getKey());
                     resObj.setQuantity(1);
-                    String subName = resObj.getDishName();
-                   // System.out.println("Dish selected is "+subName);
-                    dataList.add(new EntreeDish(name,subName));
+                    dataList.add(resObj);
                 }
             }
-
-            for(EntreeDish entreeDish:dishList)
-            {
-                System.out.println("Dishes are "+ entreeDish.heading + " ? " + entreeDish.subHeading);
-            }
-
-            //System.out.println("The array list is "+dataList);
-           // CustomAdapterForEntreeFragment adapterForEntreeFragment = new CustomAdapterForEntreeFragment(this.getContext(),dataList);
-            //entreeList.setAdapter(new ArrayAdapter<EntreeDish>(getActivity(),android.R.layout.simple_list_item_1,dishList));
-            entreeList.setAdapter(new CustomAdapterForEntreeFragment(getContext(),dataList));
+            entreeList.setAdapter(new CustomAdapterForBeveragesFragment(getContext(),dataList));
         }
-      //  entreeList.setAdapter(new ArrayAdapter<EntreeDish>(getActivity(),android.R.layout.simple_list_item_1,dishList));
+
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        Order order = new Order();
+        order = (Order) parent.getItemAtPosition(position);
+        Intent i =  new Intent(getActivity(),ManageOrderActivity.class);
+        i.putExtra("dishname",order.getDishName());
+        i.putExtra("dishdescription",order.getDishDescription());
+        i.putExtra("dishprice",order.getDishPrice());
+        i.putExtra("dishquantity",order.getQuantity());
+        startActivity(i);
 
     }
 }

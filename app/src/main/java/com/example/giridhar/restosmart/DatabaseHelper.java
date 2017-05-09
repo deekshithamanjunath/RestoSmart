@@ -70,4 +70,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
       return  getItemList;
     }
 
+    public void deleteFromDatabase(String orderid)
+    {
+        SQLiteDatabase db =this.getReadableDatabase();
+        String query = " DELETE " + " FROM " + DATABASE_TABLE_NAME + " WHERE " + COLUMN_OrderId + " = '" + orderid + "'";
+        db.execSQL(query);
+    }
+
+    public void deleteItemFromList(String orderid, String qty, String dishname)
+    {
+        SQLiteDatabase db =this.getReadableDatabase();
+        String query = " DELETE " + " FROM " + DATABASE_TABLE_NAME + " WHERE " + COLUMN_OrderId + " = '" + orderid + "' AND " + COLUMN_DishName + " = '" + dishname + "' AND " + COLUMN_Quantity + " = '" + qty + "'";
+        db.execSQL(query);
+    }
+
 }

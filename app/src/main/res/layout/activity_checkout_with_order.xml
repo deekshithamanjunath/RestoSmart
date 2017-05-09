@@ -32,7 +32,8 @@
         android:layout_marginTop="17dp"
         android:paddingLeft="10dp"
         android:layout_below="@+id/textView5"
-        android:layout_alignEnd="@+id/textView5" />
+        android:layout_alignEnd="@+id/textView5"
+        android:layout_marginBottom="10dp"/>
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dip"

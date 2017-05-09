@@ -9,16 +9,18 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="19dp"
         android:id="@+id/radioGroup"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="53dp">
+
+        android:layout_below="@+id/textView21"
+        android:layout_centerHorizontal="true">
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/beveragescategory"
             android:text="@string/beverages"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="monospace"
             android:textStyle="normal"/>
         <RadioButton
@@ -26,6 +28,8 @@
             android:layout_height="match_parent"
             android:id="@+id/appetizercategory"
             android:text="@string/appetizers"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="monospace"
             android:textStyle="normal"/>
 
@@ -34,6 +38,8 @@
             android:layout_height="match_parent"
             android:id="@+id/soupssaladcategory"
             android:text="@string/SandS"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="monospace"
             android:textStyle="normal"/>
         <RadioButton
@@ -41,6 +47,8 @@
             android:layout_height="match_parent"
             android:id="@+id/entreecategory"
             android:text="@string/entree"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="monospace"
             android:textStyle="normal"/>
         <RadioButton
@@ -48,6 +56,8 @@
             android:layout_height="match_parent"
             android:id="@+id/dessertscategory"
             android:text="@string/dessert"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="monospace"
             android:textStyle="normal"/>
 
@@ -57,60 +67,41 @@
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/radioGroup"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="39dp"
         android:text="@string/choosecategory"
         android:fontFamily="monospace"
         android:textStyle="normal"
-        android:textSize="15sp"/>
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/textView24"
         android:layout_alignStart="@+id/textView24" />
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="63dp"
-        android:layout_below="@+id/spinner"
-        android:layout_alignStart="@+id/textView25" />
-
     <TextView
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView21"
-        android:layout_below="@+id/radioGroup"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="34dp"
         android:text="@string/subcategory"
         android:fontFamily="monospace"
-        android:textStyle="normal"/>
+        android:textStyle="normal"
 
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/spinner2"
-        android:layout_alignStart="@+id/textView24"
-        android:layout_marginBottom="28dp"
-        android:text="@string/item"
-        android:fontFamily="monospace"
-        android:textStyle="normal"/>
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignStart="@+id/radioGroup" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="66dp"
-        android:text="@string/fetch" />
+        android:text="@string/fetch"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/spinner"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

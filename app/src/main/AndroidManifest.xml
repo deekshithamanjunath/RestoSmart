@@ -10,30 +10,35 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/appicon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/appicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TableViewActivity"></activity>
+        <activity android:name=".TableViewActivity" />
         <activity android:name=".CheckoutWithOrder" />
-        <activity android:name=".StartupActivity">
-
-        </activity>
+        <activity android:name=".StartupActivity" />
         <activity android:name=".ManageOrderActivity" />
         <activity
             android:name=".RestaurantMenuActivity"
             android:label="@string/title_activity_restaurant_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegistrationActivity"></activity>
-        <activity android:name=".ManagerStartupScreen">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".ManagerStartupScreen"></activity>
+        <activity android:name=".InvoiceBillActivity" />
+        <activity android:name=".ManagerOptionsActivity" />
+        <activity android:name=".AddNewDishActivity" />
+        <activity android:name=".EditDishActivity" />
+        <activity android:name=".ModifyItemActivity" />
+        <activity android:name=".RemoveDishActivity" />
+        <activity android:name=".GenericListViewDisplay"></activity>
     </application>
 
 </manifest>

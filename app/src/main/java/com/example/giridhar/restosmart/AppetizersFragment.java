@@ -81,8 +81,8 @@ public class AppetizersFragment extends Fragment implements AdapterView.OnItemCl
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
-      Order order = new Order();
-      order = (Order) parent.getItemAtPosition(position);
+        Order order = new Order();
+        order = (Order) parent.getItemAtPosition(position);
         Intent i =  new Intent(getActivity(),ManageOrderActivity.class);
         i.putExtra("dishname",order.getDishName());
         i.putExtra("dishdescription",order.getDishDescription());

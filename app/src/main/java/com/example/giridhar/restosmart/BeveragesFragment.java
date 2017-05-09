@@ -75,7 +75,7 @@ public class BeveragesFragment extends Fragment implements AdapterView.OnItemCli
             for(DataSnapshot test : innerChild)
             {
                 keyList.add(test.getKey());
-                System.out.println(test.getKey());
+                //System.out.println(test.getKey());
             }
            for(String s :keyList)
            {

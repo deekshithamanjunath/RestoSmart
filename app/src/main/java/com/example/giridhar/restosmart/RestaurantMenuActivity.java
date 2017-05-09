@@ -21,12 +21,15 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class RestaurantMenuActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
 
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     ImageButton imbtcart;
+    FirebaseAuth firebaseAuth;
 
     public String fragmentName;
     @Override
@@ -42,28 +45,12 @@ public class RestaurantMenuActivity extends AppCompatActivity implements ViewPag
 
         // Set up the ViewPager with the sections adapter.
             mViewPager = (ViewPager) findViewById(R.id.container);
-//            Intent i = getIntent();
-//            int position =i.getIntExtra("fragname",0);
-//            if(i==null)
-//            {
-//                mViewPager.setAdapter(mSectionsPagerAdapter);
-//                TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-//                tabLayout.setupWithViewPager(mViewPager);
-//                getSupportActionBar().setTitle("RestoSmart");
-//            }
-//            else
-//            {
-//                mViewPager.setCurrentItem(position);
-//                TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-//                tabLayout.setupWithViewPager(mViewPager);
-//                getSupportActionBar().setTitle("RestoSmart");
-//            }
             mViewPager.setAdapter(mSectionsPagerAdapter);
             //mViewPager.addOnPageChangeListener(this);
             TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
             tabLayout.setupWithViewPager(mViewPager);
             getSupportActionBar().setTitle("RestoSmart");
-
+            firebaseAuth=FirebaseAuth.getInstance();
     }
 
 
@@ -85,10 +72,18 @@ public class RestaurantMenuActivity extends AppCompatActivity implements ViewPag
             Intent i = new Intent(RestaurantMenuActivity.this,CheckoutWithOrder.class);
             startActivity(i);
         }
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
+        else if(id==R.id.logout)
+        {
+            firebaseAuth.signOut();
+            Intent i = new Intent(RestaurantMenuActivity.this,LoginActivity.class);
+            startActivity(i);
+            finish();
+        }
+        else
+        {
+            //
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -172,9 +167,7 @@ public class RestaurantMenuActivity extends AppCompatActivity implements ViewPag
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-
                     return "Beverages";
-
                 case 1:
                     return "Appetizers";
                 case 2:
