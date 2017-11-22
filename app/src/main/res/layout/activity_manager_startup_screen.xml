@@ -100,6 +100,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/fetch"
+        android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="48dp"
         android:layout_below="@+id/spinner"
         android:layout_centerHorizontal="true" />

@@ -1,0 +1,40 @@
+
+
+                                                                                        RestoSmart
+
+                                              Names of contributors - Deekshitha Veerabhadrappa Manjunath(819677437), Giridhar Vijaya Raghava Rao(820277140)
+                                                          
+                                
+    
+                                                                                       About the application
+ 
+	Our "RestoSmart" app is a smart application which can be used by restaurants to manage their day to day orders in a better manner. The application is mainly designed for the staff- separate credentials for the waiter and the manager. 
+	The application flow is
+	- Waiters register themselves for the application.
+	- Once registered, they are allowed to take orders from customers. 
+	- Assigning customer name is compulsory to allot the table. 
+	- Once the table has been booked for the customer, waiter can proceed and start placing orders for the customer. 
+	- There are options to delete the selected item or modify the selected item. 
+	- Once customer confirms his order, the order is placed and a bill is generated. 
+	- We have only just tried to imitate the process of placing the order and and check paid confirmation. 
+	- Once the current customer has paid the check, waiter can go ahead and take orders from other customers. 
+	- The manager log in, has options to add new dish, delete existing dish or update the price of an existing dish with options to select the categories as well.
+	- There is no option for registering new managers. Manager role and permissions have been set.
+
+SDK levels - API 19 to API 25.
+
+Email id for manager login - manager@gmail.com 
+password - 123456
+
+Use this credential to login as the manager.
+
+FireBase Console - https://console.firebase.google.com/project/restosmart-fc7ed/overview                             
+
+Known Bugs:
+
+When given the option to enter the customer name in the tableview activity, please enter only String. Number input isnt acceptable.
+When adding a new dish as manager, dish name and dish description should be of type String. Numbers arent acceptable. Price paramter has no limits.
+Sometimes when manager tries to modify the price of an item, when a ui element tries to access data before the data has been updated, app crashes but the price of the item wil be updated.
+Manager log in is for only one device at a time.
+
+ 

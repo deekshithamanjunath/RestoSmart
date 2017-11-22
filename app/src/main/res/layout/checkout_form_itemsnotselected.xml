@@ -13,6 +13,7 @@
         android:text="@string/textForEmpty"
         android:fontFamily="monospace"
         android:textSize="20sp"
+        android:textAlignment="center"
         android:textStyle="bold"/>
 
     <TextView
@@ -24,6 +25,7 @@
         android:text="@string/clickForAdd"
         android:fontFamily="monospace"
         android:textColor="#2962FF"
+        android:textAlignment="center"
         android:background="#FFFFFF"
         android:clickable="true" />
 </RelativeLayout>

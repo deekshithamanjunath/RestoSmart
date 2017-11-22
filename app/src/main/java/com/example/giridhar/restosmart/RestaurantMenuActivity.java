@@ -22,14 +22,20 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import static com.example.giridhar.restosmart.TableViewActivity.idOfOrder;
 
 public class RestaurantMenuActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
 
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-    ImageButton imbtcart;
     FirebaseAuth firebaseAuth;
+    DatabaseHelper databaseHelper;
+    DatabaseReference dataBaseRef;
+    FirebaseDatabase firebaseDataBase;
 
     public String fragmentName;
     @Override
@@ -39,45 +45,46 @@ public class RestaurantMenuActivity extends AppCompatActivity implements ViewPag
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
-            mViewPager = (ViewPager) findViewById(R.id.container);
-            mViewPager.setAdapter(mSectionsPagerAdapter);
-            //mViewPager.addOnPageChangeListener(this);
-            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-            tabLayout.setupWithViewPager(mViewPager);
-            getSupportActionBar().setTitle("RestoSmart");
-            firebaseAuth=FirebaseAuth.getInstance();
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+        getSupportActionBar().setTitle("RestoSmart");
+        firebaseAuth=FirebaseAuth.getInstance();
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_restaurant_menu, menu);
+       getMenuInflater().inflate(R.menu.menu_restaurant_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        databaseHelper=new DatabaseHelper(this);
+        firebaseDataBase= FirebaseDatabase.getInstance();
+        dataBaseRef =firebaseDataBase.getReference("tables");
         if(id==R.id.cart)
         {
             Intent i = new Intent(RestaurantMenuActivity.this,CheckoutWithOrder.class);
+            finish();
             startActivity(i);
         }
         else if(id==R.id.logout)
         {
-            firebaseAuth.signOut();
             Intent i = new Intent(RestaurantMenuActivity.this,LoginActivity.class);
             startActivity(i);
             finish();
+            String res[] = idOfOrder.split("(?<=\\D)(?=\\d)");
+            String tablename = "table" + res[1];
+            dataBaseRef.child(tablename).child("isBooked").setValue(false);
+            databaseHelper.deleteFromDatabase(idOfOrder);
+            firebaseAuth.signOut();
+
         }
         else
         {
@@ -106,10 +113,6 @@ public class RestaurantMenuActivity extends AppCompatActivity implements ViewPag
     }
 
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -118,8 +121,6 @@ public class RestaurantMenuActivity extends AppCompatActivity implements ViewPag
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position)
             {
                 case 0:
@@ -159,7 +160,6 @@ public class RestaurantMenuActivity extends AppCompatActivity implements ViewPag
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 5;
         }
 
@@ -188,5 +188,8 @@ public class RestaurantMenuActivity extends AppCompatActivity implements ViewPag
         this.fragmentName = fragmentName;
     }
 
+    @Override
+    public void onBackPressed() {
 
+    }
 }

@@ -45,6 +45,7 @@ ArrayList<Order> orderedList = new ArrayList<>();
        else
        {
            setContentView(R.layout.activity_checkout_with_order);
+
            orderedMenu = (ListView)findViewById(R.id.orderedMenuList);
            tvTax =(TextView)findViewById(R.id.textView8);
            tvTaxamount=(TextView)findViewById(R.id.textView17);
@@ -52,19 +53,22 @@ ArrayList<Order> orderedList = new ArrayList<>();
            tvTotalAmount=(TextView)findViewById(R.id.textView18);
            btaddmore =(Button)findViewById(R.id.addMoreItems);
            btgenerateBill =(Button)findViewById(R.id.checkout);
+
            btaddmore.setOnClickListener(this);
            btgenerateBill.setOnClickListener(this);
+
            tvTax.setText("Tax");
            tvTotal.setText("Total");
+
            firebase=FirebaseDatabase.getInstance();
            databaseref = firebase.getReference("tables");
+
            orderedMenu.setAdapter(new CustomAdapterForCheckoutForm(this,orderedList));
            orderedMenu.setOnItemClickListener(this);
            getTotalAmount();
        }
 
     }
-
 
     private void getTotalAmount()
     {
@@ -94,10 +98,12 @@ ArrayList<Order> orderedList = new ArrayList<>();
         {
             case R.id.addMoreItems:
                 Intent navigateTo = new Intent(CheckoutWithOrder.this,RestaurantMenuActivity.class);
+                finish();
                 startActivity(navigateTo);
                 break;
             case R.id.textView19:
                 Intent navigate = new Intent(CheckoutWithOrder.this,RestaurantMenuActivity.class);
+                finish();
                 startActivity(navigate);
                 break;
             case R.id.checkout:
@@ -108,18 +114,19 @@ ArrayList<Order> orderedList = new ArrayList<>();
 
     private void placeOrder()
     {
-       // DatabaseHelper db=  new DatabaseHelper(this);
-       // Toast.makeText(CheckoutWithOrder.this,"Your Order has been placed",Toast.LENGTH_SHORT).show();
         String orderid =TableViewActivity.idOfOrder;
         String res[] = orderid.split("(?<=\\D)(?=\\d)");
+
         final String tablename ="table"+res[1];
         databaseref.child(tablename).child("isBooked").setValue(false);
         final ProgressDialog progressDialog = new ProgressDialog(this);
+
         progressDialog.setMessage("Customer is being served");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setProgress(6000);
         progressDialog.setIndeterminate(false);
         progressDialog.show();
+
         Runnable progressRunnable = new Runnable() {
 
             @Override
@@ -130,6 +137,7 @@ ArrayList<Order> orderedList = new ArrayList<>();
                 Intent i = new Intent(CheckoutWithOrder.this,InvoiceBillActivity.class);
                 i.putExtra("tablename",tablename);
                 i.putExtra("totalamount",tvTotalAmount.getText().toString());
+                finish();
                 startActivity(i);
             }
         };
@@ -144,9 +152,10 @@ ArrayList<Order> orderedList = new ArrayList<>();
     {
         Order orderObj = new Order();
         orderObj = (Order) parent.getItemAtPosition(position);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final Order finalOrderObj = orderObj;
         final DatabaseHelper databaseHelper=new DatabaseHelper(this);
+
         final Order finalOrderObj1 = orderObj;
         builder.setMessage("Are you sure you want to delete this item?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
@@ -154,7 +163,6 @@ ArrayList<Order> orderedList = new ArrayList<>();
             {
                 databaseHelper.deleteItemFromList(TableViewActivity.idOfOrder, String.valueOf(finalOrderObj1.getQuantity()), finalOrderObj1.getDishName());
                 Intent intent = getIntent();
-                finish();
                 startActivity(intent);
 
             }
@@ -166,5 +174,13 @@ ArrayList<Order> orderedList = new ArrayList<>();
         });
         AlertDialog alertObj = builder.create();
         alertObj.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent back = new Intent(CheckoutWithOrder.this,RestaurantMenuActivity.class);
+        startActivity(back);
+        finish();
     }
 }

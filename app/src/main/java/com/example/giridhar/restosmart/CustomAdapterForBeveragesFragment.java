@@ -24,6 +24,7 @@ public class CustomAdapterForBeveragesFragment extends BaseAdapter {
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
+
     public int getCount() {
         return dataArray.size();
     }

@@ -15,30 +15,45 @@
         android:roundIcon="@drawable/appicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TableViewActivity" />
-        <activity android:name=".CheckoutWithOrder" />
-        <activity android:name=".StartupActivity" />
-        <activity android:name=".ManageOrderActivity" />
+        <activity android:name=".TableViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CheckoutWithOrder"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".StartupActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ManageOrderActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".RestaurantMenuActivity"
             android:label="@string/title_activity_restaurant_menu"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginActivity">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".ManagerStartupScreen"></activity>
-        <activity android:name=".InvoiceBillActivity" />
-        <activity android:name=".ManagerOptionsActivity" />
-        <activity android:name=".AddNewDishActivity" />
-        <activity android:name=".EditDishActivity" />
-        <activity android:name=".ModifyItemActivity" />
-        <activity android:name=".RemoveDishActivity" />
-        <activity android:name=".GenericListViewDisplay"></activity>
+        <activity android:name=".RegistrationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ManagerStartupScreen"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".InvoiceBillActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ManagerOptionsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddNewDishActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EditDishActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ModifyItemActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RemoveDishActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".GenericListViewDisplay"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

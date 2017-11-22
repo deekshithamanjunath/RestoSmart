@@ -31,16 +31,20 @@ public class AppetizersFragment extends Fragment implements AdapterView.OnItemCl
     ListView appetizerlist;
     ArrayList<Order> dataList = new ArrayList<>();
     int fragPosition;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         v= inflater.inflate(R.layout.appetizers_fragment,container,false);
+
         appetizerlist =(ListView)v.findViewById(R.id.appetizerList);
         appetizerlist.setOnItemClickListener(this);
+
         firebaseDatabase =FirebaseDatabase.getInstance();
         databaseReference =firebaseDatabase.getReference("menu").child("Appetizers");
         getAppetizersList(databaseReference);
+
         Bundle bdl = getArguments();
         fragPosition = bdl.getInt("fragname");
         return v;
@@ -83,14 +87,13 @@ public class AppetizersFragment extends Fragment implements AdapterView.OnItemCl
     {
         Order order = new Order();
         order = (Order) parent.getItemAtPosition(position);
+
         Intent i =  new Intent(getActivity(),ManageOrderActivity.class);
         i.putExtra("dishname",order.getDishName());
         i.putExtra("dishdescription",order.getDishDescription());
         i.putExtra("dishprice",order.getDishPrice());
         i.putExtra("dishquantity",order.getQuantity());
-        //String tagname = String.valueOf(v.findViewWithTag("appetizers"));
-         i.putExtra("fragname",fragPosition);
-        //System.out.println(tagname);
+        i.putExtra("fragname",fragPosition);
         startActivity(i);
     }
 }

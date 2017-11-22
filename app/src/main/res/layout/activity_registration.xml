@@ -38,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="61dp"
         android:text="@string/register"
-        android:background="@drawable/solid_editext"
-        android:textColor="#2962FF"
+        android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"
         android:fontFamily="monospace"/>
 </RelativeLayout>

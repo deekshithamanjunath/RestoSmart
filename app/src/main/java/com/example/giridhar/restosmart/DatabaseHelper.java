@@ -45,11 +45,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
+
         contentValues.put(COLUMN_OrderId,bevOrder.getOrderId());
         contentValues.put(COLUMN_Quantity,bevOrder.getQuantity());
         contentValues.put(COLUMN_DishName,bevOrder.getDishName());
         contentValues.put(COLUMN_DishDescription,bevOrder.getDishDescription());
         contentValues.put(COLUMN_DishPrice,bevOrder.getDishPrice());
+
         db.insert(DATABASE_TABLE_NAME,null,contentValues);
         db.close();
     }
@@ -61,10 +63,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while(cursor.moveToNext())
         {
            Order order = new Order();
+
            order.setQuantity(cursor.getInt(cursor.getColumnIndex(COLUMN_Quantity)));
            order.setDishName(cursor.getString(cursor.getColumnIndex(COLUMN_DishName)));
            order.setDishDescription(cursor.getString(cursor.getColumnIndex(COLUMN_DishDescription)));
            order.setDishPrice(cursor.getString(cursor.getColumnIndex(COLUMN_DishPrice)));
+
            getItemList.add(order);
         }
       return  getItemList;

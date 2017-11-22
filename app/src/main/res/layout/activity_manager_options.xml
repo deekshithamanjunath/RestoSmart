@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.giridhar.restosmart.ManagerOptionsActivity"
+    android:background="#FFFFFF">
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:drawableStart="@drawable/ic_launcher_add"
+        android:background="#FFFFFF"
+        android:text="@string/addmoreitems"
+        android:fontFamily="monospace"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button5"
+        />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:drawableStart="@drawable/ic_launcher_edit"
+        android:background="#FFFFFF"
+        android:text="@string/editDish"
+        android:fontFamily="monospace"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp"
+        android:drawableStart="@drawable/ic_launcher_delete"
+        android:background="#FFFFFF"
+        android:text="@string/removedish"
+        android:fontFamily="monospace"
+        android:textSize="18sp"/>
+</RelativeLayout>

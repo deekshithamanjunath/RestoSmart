@@ -25,12 +25,14 @@ FirebaseAuth firebaseauth;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         etMailId =(EditText)findViewById(R.id.editText4);
         etPassword =(EditText)findViewById(R.id.editText6);
         tvEmail =(TextView)findViewById(R.id.textView20);
         tvPassword=(TextView)findViewById(R.id.textView22);
         tvRegister =(TextView)findViewById(R.id.textView23);
         btLogin = (Button)findViewById(R.id.loginButton);
+
         firebaseauth =FirebaseAuth.getInstance();
         btLogin.setOnClickListener(this);
         tvRegister.setOnClickListener(this);
@@ -48,8 +50,6 @@ FirebaseAuth firebaseauth;
                                Intent navigate = new Intent(LoginActivity.this,RegistrationActivity.class);
                                startActivity(navigate);
                                break;
-
-
         }
 
     }
@@ -60,11 +60,13 @@ FirebaseAuth firebaseauth;
         String password = etPassword.getText().toString();
         if(email.isEmpty())
         {
-            //
+            etMailId.requestFocus();
+            etMailId.setError("Please Enter Valid Email");
         }
         else if(password.isEmpty() || password.length() < 6)
         {
-            //
+            etPassword.requestFocus();
+            etPassword.setError("Please Enter Valid Password");
         }
         else {
             if (email.equals("manager@gmail.com"))
@@ -74,17 +76,15 @@ FirebaseAuth firebaseauth;
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
-                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(LoginActivity.this, ManagerStartupScreen.class);
+                            finish();
+                            startActivity(i);
                             etMailId.setText("");
                             etPassword.setText("");
-                            Intent i = new Intent(LoginActivity.this, ManagerStartupScreen.class);
-                            startActivity(i);
                         } else {
-                            Toast.makeText(getApplicationContext(), "Unsuccessful", Toast.LENGTH_LONG).show();
-
+                            Toast.makeText(getApplicationContext(), "Unsuccessful", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
             }
@@ -94,20 +94,25 @@ FirebaseAuth firebaseauth;
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
-                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(LoginActivity.this, TableViewActivity.class);
+                            finish();
+                            startActivity(i);
                             etMailId.setText("");
                             etPassword.setText("");
-                            Intent i = new Intent(LoginActivity.this, TableViewActivity.class);
-                            startActivity(i);
                         } else {
-                            Toast.makeText(getApplicationContext(), "Unsuccessful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Unsuccessful", Toast.LENGTH_SHORT).show();
 
                         }
-
                     }
                 });
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

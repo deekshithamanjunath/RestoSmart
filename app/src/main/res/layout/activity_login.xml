@@ -23,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:background="@drawable/solid_editext"
         android:inputType="textEmailAddress"
+        android:fontFamily="monospace"
         android:padding="10dp"
         android:layout_alignBottom="@+id/textView20"
         android:layout_alignStart="@+id/loginButton" />
@@ -34,11 +34,11 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:text="@string/login"
-        android:background="@drawable/solid_editext"
+        android:background="@color/colorAccent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="164dp"
-        android:textColor="#2962FF" />
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView22"
@@ -55,8 +55,8 @@
         android:id="@+id/editText6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="monospace"
         android:ems="10"
-        android:background="@drawable/solid_editext"
         android:padding="10dp"
         android:inputType="textPassword"
         android:layout_alignBottom="@+id/textView22"

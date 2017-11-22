@@ -28,19 +28,21 @@ public class DessertsFragment extends Fragment implements AdapterView.OnItemClic
     View v;
     ListView dessertsList;
     ArrayList<Order> dataList = new ArrayList<>();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         v= inflater.inflate(R.layout.desserts_fragment,container,false);
+
         dessertsList =(ListView)v.findViewById(R.id.dessertsList);
         dessertsList.setOnItemClickListener(this);
+
         firebaseDatabase =FirebaseDatabase.getInstance();
         databaseReference =firebaseDatabase.getReference("menu").child("Desserts");
         getDessertsList(databaseReference);
 
         return v;
-
     }
 
     private void getDessertsList(DatabaseReference databaseReference)
@@ -64,6 +66,7 @@ public class DessertsFragment extends Fragment implements AdapterView.OnItemClic
         for(DataSnapshot data: children)
         {
             Order resObj = new Order();
+
             resObj.setDishName(data.getKey());
             resObj.setDishDescription(data.child("description").getValue().toString());
             resObj.setDishPrice((data.child("price").getValue().toString()));
@@ -78,6 +81,7 @@ public class DessertsFragment extends Fragment implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Order order = new Order();
         order = (Order) parent.getItemAtPosition(position);
+
         Intent i =  new Intent(getActivity(),ManageOrderActivity.class);
         i.putExtra("dishname",order.getDishName());
         i.putExtra("dishdescription",order.getDishDescription());

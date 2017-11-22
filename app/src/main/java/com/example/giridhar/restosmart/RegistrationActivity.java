@@ -1,5 +1,6 @@
 package com.example.giridhar.restosmart;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,13 +18,17 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     EditText etEmail,etPassword;
     Button btRegister;
     FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_registration);
+
         etEmail =(EditText)findViewById(R.id.editText5);
         etPassword=(EditText)findViewById(R.id.editText7);
         btRegister =(Button)findViewById(R.id.button2);
+
         firebaseAuth =FirebaseAuth.getInstance();
         btRegister.setOnClickListener(this);
     }
@@ -35,11 +40,13 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
      String password = etPassword.getText().toString();
      if(email.isEmpty())
      {
-         //
+         etEmail.requestFocus();
+         etEmail.setError("Please Enter Valid Email");
      }
      else if(password.isEmpty() || password.length()<6)
      {
-         //
+         etPassword.requestFocus();
+         etPassword.setError("Please Enter Valid Password");
      }
      else
      {
@@ -49,12 +56,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
              {
               if(task.isSuccessful())
               {
-
                   Toast.makeText(RegistrationActivity.this,"You have been registered successfully",Toast.LENGTH_SHORT).show();
+                  Intent login = new Intent(RegistrationActivity.this,LoginActivity.class);
+                  finish();
+                  startActivity(login);
               }
               else
               {
-                 Toast.makeText(RegistrationActivity.this,"Error registering",Toast.LENGTH_LONG).show();
+                 Toast.makeText(RegistrationActivity.this,"Error registering",Toast.LENGTH_SHORT).show();
               }
              }
          });

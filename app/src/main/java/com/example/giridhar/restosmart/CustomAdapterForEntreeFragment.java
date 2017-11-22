@@ -66,7 +66,6 @@ public class CustomAdapterForEntreeFragment extends ArrayAdapter<EntreeInterface
                         subHeading.setText(entreeDish.subHeading);
             }
         }
-
         return v;
     }
 

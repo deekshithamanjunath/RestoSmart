@@ -1,6 +1,7 @@
 package com.example.giridhar.restosmart;
 
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,20 +29,22 @@ import java.util.ArrayList;
 public class ManagerStartupScreen extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, AdapterView.OnItemSelectedListener, View.OnClickListener {
 RadioGroup radioGroup;
 RadioButton rdappetizer,rdbeverages,rdentree,rdsoupsalad,rddesserts;
-TextView tvcategory,tvsubcategory,tvitem;
+TextView tvcategory,tvsubcategory;
 FirebaseDatabase firebaseDatabase;
-Spinner spsubcategory,spitem;
+Spinner spsubcategory;
 DatabaseReference databaseReference;
 ArrayList<String> subcategorylist =  new ArrayList<>();
 Button btproceed;
 String selectedCategory,selectedSubCategory;
 FirebaseAuth firebaseAuth;
 
+
 ArrayAdapter<String> adapterForSubCategory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_startup_screen);
+
         tvcategory =(TextView)findViewById(R.id.textView21);
         radioGroup =(RadioGroup)findViewById(R.id.radioGroup);
         rdbeverages =(RadioButton)findViewById(R.id.beveragescategory);
@@ -52,9 +55,12 @@ ArrayAdapter<String> adapterForSubCategory;
         tvsubcategory=(TextView)findViewById(R.id.textView24);
         spsubcategory =(Spinner)findViewById(R.id.spinner);
         btproceed =(Button)findViewById(R.id.button3);
+
         tvsubcategory.setVisibility(View.GONE);
         spsubcategory.setVisibility(View.GONE);
+
         adapterForSubCategory = new ArrayAdapter<String>(ManagerStartupScreen.this,android.R.layout.simple_spinner_item,subcategorylist);
+
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference =firebaseDatabase.getReference("menu");
@@ -69,8 +75,6 @@ ArrayAdapter<String> adapterForSubCategory;
         btproceed.setOnClickListener(this);
 
     }
-
-
 
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId)
@@ -148,7 +152,6 @@ ArrayAdapter<String> adapterForSubCategory;
                   spsubcategory.setVisibility(View.GONE);
               }
           }
-
       }
       adapterForSubCategory.notifyDataSetChanged();
 
@@ -158,23 +161,18 @@ ArrayAdapter<String> adapterForSubCategory;
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
-      //spsubcategory.setSelection(position);
-     selectedSubCategory = parent.getItemAtPosition(position).toString();
-     // System.out.println(selectedsub);
-
+        selectedSubCategory = parent.getItemAtPosition(position).toString();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent)
     {
-
+        //
     }
 
     @Override
     public void onClick(View v)
     {
-      System.out.println(selectedCategory);
-      System.out.println(selectedSubCategory);
       if(radioGroup.getCheckedRadioButtonId()==-1)
       {
           Toast.makeText(ManagerStartupScreen.this,"Please choose a category to proceed",Toast.LENGTH_SHORT).show();
@@ -208,6 +206,11 @@ ArrayAdapter<String> adapterForSubCategory;
             finish();
         }
         return super.onOptionsItemSelected(item);
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 }

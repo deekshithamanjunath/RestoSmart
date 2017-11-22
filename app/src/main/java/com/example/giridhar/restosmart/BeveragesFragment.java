@@ -30,16 +30,20 @@ public class BeveragesFragment extends Fragment implements AdapterView.OnItemCli
     ArrayList<Order> dataList = new ArrayList<>();
     int fragPosition;
     View v;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         v= inflater.inflate(R.layout.beverages_fragment,container,false);
+
         beveragesList =(ListView)v.findViewById(R.id.beveragesList);
         beveragesList.setOnItemClickListener(this);
+
         firebaseDatabase =FirebaseDatabase.getInstance();
         databaseReference =firebaseDatabase.getReference("menu").child("Beverages");
         getBeveragesList(databaseReference);
+
         Bundle bdl =getArguments();
         fragPosition =bdl.getInt("fragname");
         return v;
@@ -61,8 +65,6 @@ public class BeveragesFragment extends Fragment implements AdapterView.OnItemCli
     });
     }
 
-
-
     private void getData(Iterable<DataSnapshot> children)
     {
         dataList.clear();
@@ -75,13 +77,13 @@ public class BeveragesFragment extends Fragment implements AdapterView.OnItemCli
             for(DataSnapshot test : innerChild)
             {
                 keyList.add(test.getKey());
-                //System.out.println(test.getKey());
             }
            for(String s :keyList)
            {
                if(data.child(s).hasChildren())
                {
                   Order resObj = new Order();
+
                   resObj.setDishName(data.child(s).getKey());
                   resObj.setDishDescription(data.child(s).child("description").getValue().toString());
                   resObj.setDishPrice(data.child(s).child("price").getValue().toString());
@@ -100,6 +102,7 @@ public class BeveragesFragment extends Fragment implements AdapterView.OnItemCli
     {
         Order order = new Order();
         order = (Order) parent.getItemAtPosition(position);
+
         Intent i =  new Intent(getActivity(),ManageOrderActivity.class);
         i.putExtra("dishname",order.getDishName());
         i.putExtra("dishdescription",order.getDishDescription());
